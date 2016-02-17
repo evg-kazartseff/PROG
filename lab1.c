@@ -40,5 +40,10 @@ void check (char * str, char * delim)
 
 void process (char * str, char * delim)
 {
-
+	for (int i = 0; i < 261; i++) {
+		if (str[i] == delim) {
+			int t = 1;
+			char  str[];
+		}
+	}
 }
