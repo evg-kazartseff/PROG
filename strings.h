@@ -1,0 +1,1 @@
+int slen (char * str);
