@@ -13,4 +13,5 @@ void process(char str[], char delim, int *ptr[])
         printf("ptr[%d] = %d\n", i, ptr[i]);
         printf("podstroka %d = %s\n", i, ptr[i]);
     }
+    printf("podstroka %d = %c\n", c, ptr[c]);
 }

@@ -7,6 +7,7 @@
 
 #define str_size 1025
 #define ptr_size 1025
+
 int main()
 {
     char str[str_size];
