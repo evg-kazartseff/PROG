@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "input.h"
 #include "process.h"
 #include "check.h"
