@@ -1,1 +1,1 @@
-int size(char *str, char *delim);
+int check (char * str, char * delim);
