@@ -6,14 +6,17 @@
 #include "check.h"
 #include "func.h"
 
-int main ()
+
+#define str_size 1025
+#define ptr_size 1025
+
+int main()
 {
-	char str[1025];
-	char delim;
-	int ptr[1025];
-	input (str, &delim);
-	process (str, delim, ptr);
-	return 0;
+    char str[str_size];
+    char delim;
+    int *ptr1[ptr_size];
+    int *ptr2[ptr_size];
+    input(str, &delim);
+    process(str, delim, ptr1, ptr2);
+    return 0;
 }
-
-
