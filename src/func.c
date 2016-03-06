@@ -1,5 +1,16 @@
 #include "func.h"
 
+//число раз использования символа
+int colch (char str[], char ch)
+{
+	int j = 0;
+	for (int i = 0; str[i] != '\0'; i++) {
+		if (str[i] == ch) {
+			j++;
+		}
+	}
+	return j;
+}
 
 //количество символов в строке\подстроке
 int slen(char str[])

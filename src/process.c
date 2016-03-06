@@ -5,22 +5,30 @@
 
 void process(char str[], char delim, int *ptr1[], int *ptr2[])
 {
+	int size = colch(str, delim);
+    int *ptr[size][256];
+	
     int c;
-    c = stok(str, delim, ptr1);
-    
-    
+    c = stok(str, delim, ptr[0]);
     
     printf("col podstrok = %d\n", c);
     int i;
     for (i = 0; i < c; i++) {
-        printf("ptr[%d] = %d\n", i, ptr1[i]);
-        printf("pstr %d = %s\n", i, ptr1[i]);
+        printf("ptr [0][%d] = %d\n", i, ptr[0][i]);
+        printf("pstr [0][%d] = %s\n", i, ptr[0][i]);
     }
     char sl = '\\';
-    int z = stok(ptr1[0], sl, ptr2);
+    int z = stok(ptr[0][0], sl, ptr[1]);
     printf("col podstrok = %d\n", z);
     for (i = 0; i < z; i++) {
-        printf("ptr[%d] = %d\n", i, ptr2[i]);
-        printf("pstr %d = %s\n", i, ptr2[i]);
+        printf("ptr[1][%d] = %d\n", i, ptr[1][i]);
+        printf("pstr [1][%d] = %s\n", i, ptr[1][i]);
+    }
+    
+    int x = stok(ptr[0][1], sl, ptr[2]);
+    printf("col podstrok = %d\n", x);
+    for (i = 0; i < x; i++) {
+        printf("ptr[1][%d] = %d\n", i, ptr[2][i]);
+        printf("pstr [1][%d] = %s\n", i, ptr[2][i]);
     }
 }
