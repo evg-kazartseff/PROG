@@ -1,9 +1,10 @@
 #include "check.h"
 #include <stdio.h>
 #include <stdlib.h>
-int check(char *str, char *delim)
-{
+
 //превышение допустимой длины строки
+int strlong(char str[], char delim)
+{
     int i = 0;
     while (str[i] != '\0') {
         i = i + 1;
@@ -14,3 +15,4 @@ int check(char *str, char *delim)
         return EXIT_FAILURE;
     }
 }
+

@@ -5,30 +5,37 @@
 
 void process(char str[], char delim)
 {
-	int size = colch(str, delim);
+    int size = colch(str, delim);
     int *ptr[size][256];
-	
-    int c;
-    c = stok(str, delim, ptr[0]);
     
-    printf("col podstrok = %d\n", c);
+    char cygdrive[] = "/cygdrive/";
+    int len_cdr = slen(cygdrive);
+    
+    
     int i;
+
+    int c = stok(str, delim, ptr[0]);
+    printf("ways = %d\n", c);
     for (i = 0; i < c; i++) {
-        printf("ptr [0][%d] = %d\n", i, ptr[0][i]);
+        printf("adr_ptr [0][%d] = %d\n", i, ptr[0][i]);
         printf("pstr [0][%d] = %s\n", i, ptr[0][i]);
     }
+	
+	int h = drv_in_str(ptr[0][0]);
+	printf("drive idx %d\n",h);
+	
     char sl = '\\';
-    int z = stok(ptr[0][0], sl, ptr[1]);
-    printf("col podstrok = %d\n", z);
-    for (i = 0; i < z; i++) {
-        printf("ptr[1][%d] = %d\n", i, ptr[1][i]);
-        printf("pstr [1][%d] = %s\n", i, ptr[1][i]);
+
+    int tmp, j;
+    for (i = 1; i <= c; i++) {
+        tmp = stok(ptr[0][i - 1], sl, ptr[i]);
+        printf("margin = %d\n", tmp);
+        for (j = 0; j < tmp; j++) {
+            printf("adr_ptr[%d][%d] = %d\n", i, j, ptr[i][j]);
+            printf("pstr [%d][%d] = %s\n", i, j, ptr[i][j]);    
+        }
+        printf("\n");
     }
-    
-    int x = stok(ptr[0][1], sl, ptr[2]);
-    printf("col podstrok = %d\n", x);
-    for (i = 0; i < x; i++) {
-        printf("ptr[2][%d] = %d\n", i, ptr[2][i]);
-        printf("pstr [2][%d] = %s\n", i, ptr[2][i]);
-    }
+	
+	
 }

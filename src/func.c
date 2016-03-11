@@ -1,15 +1,15 @@
 #include "func.h"
 
 //число раз использования символа
-int colch (char str[], char ch)
+int colch(char str[], char ch)
 {
-	int j = 0;
-	for (int i = 0; str[i] != '\0'; i++) {
-		if (str[i] == ch) {
-			j++;
-		}
-	}
-	return j;
+    int j = 0;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == ch) {
+            j++;
+        }
+    }
+    return j;
 }
 
 //количество символов в строке\подстроке
@@ -77,4 +77,20 @@ int sstr(char txt[], char p[])
         suf++;
     }
     return pos;
+}
+//поиск имени диска $:
+int drv_in_str(char str[])
+{
+	char drive[]={'Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'};
+    char suf_drive = ':';
+    int i = schr(str, suf_drive);
+    if (i != -1) {
+		int j = schr(drive, str[i-1]);
+		if (j != -1) {
+			return i-1;
+		}
+	}
+	else {
+		return i;
+	} 
 }
