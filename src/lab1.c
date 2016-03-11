@@ -14,9 +14,7 @@ int main()
 {
     char str[str_size];
     char delim;
-    int *ptr1[ptr_size];
-    int *ptr2[ptr_size];
     input(str, &delim);
-    process(str, delim, ptr1, ptr2);
+    process(str, delim);
     return 0;
 }

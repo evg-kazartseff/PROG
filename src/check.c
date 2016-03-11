@@ -1,5 +1,5 @@
 #include "check.h"
-#include "stdio.h"
+#include <stdio.h>
 #include <stdlib.h>
 int check(char *str, char *delim)
 {

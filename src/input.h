@@ -1,1 +1,1 @@
-void input(char *str, char *delim);
+void input(char str[], char *delim);

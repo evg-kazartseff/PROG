@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "func.h"
 
-void process(char str[], char delim, int *ptr1[], int *ptr2[])
+void process(char str[], char delim)
 {
 	int size = colch(str, delim);
     int *ptr[size][256];
@@ -28,7 +28,7 @@ void process(char str[], char delim, int *ptr1[], int *ptr2[])
     int x = stok(ptr[0][1], sl, ptr[2]);
     printf("col podstrok = %d\n", x);
     for (i = 0; i < x; i++) {
-        printf("ptr[1][%d] = %d\n", i, ptr[2][i]);
-        printf("pstr [1][%d] = %s\n", i, ptr[2][i]);
+        printf("ptr[2][%d] = %d\n", i, ptr[2][i]);
+        printf("pstr [2][%d] = %s\n", i, ptr[2][i]);
     }
 }
