@@ -4,8 +4,9 @@
 #include "process.h"
 #include "check.h"
 #include "func.h"
+#include "output.h"
 
-#define str_size 1025
+#define str_size 2049
 
 int main()
 {
@@ -13,5 +14,6 @@ int main()
     char delim;
     input(str, &delim);
     process(str, delim);
+    output(str);
     return 0;
 }

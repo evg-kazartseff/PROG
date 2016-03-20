@@ -48,6 +48,15 @@ int stok(char str[], char delim, int *ptr[])
     return j;
 }
 
+//востановление строки
+int suntok(char str[], char delim, char *ptr[], int cnt)
+{
+	int i;
+	for(i = 1; i < cnt; i++){
+		*(ptr[i] - 1) = delim;
+	}
+}
+
 //посимвольное сравнивание строк
 int sequal(char s1[], char s2[])
 {
@@ -78,6 +87,7 @@ int sstr(char txt[], char p[])
     }
     return pos;
 }
+
 //поиск имени диска $:
 int drv_in_str(char str[])
 {
@@ -89,8 +99,53 @@ int drv_in_str(char str[])
 		if (j != -1) {
 			return i-1;
 		}
+		else {
+			return j;
+		}
 	}
 	else {
 		return i;
 	} 
+}
+
+//функция смещения на вправо
+void right(char str[], int len_str, int len)
+{
+    int t = len_str;
+	for (t ; t >= 0; t--) {
+		str[t + len] = str[t];
+	}
+}
+
+//приведение к нижнему регистру
+char toLowCase(char ch) 
+{ 
+	if(ch >= 'A' && ch <= 'Z')
+		return ch + ('a' - 'A');
+	return ch;
+}
+
+//копирование строки в строку
+void copy(char s1[], char s2[])
+{
+	for(int i=0; s1[i] != '\0'; i++)
+	s2[i] = s1[i];
+}
+
+//вставка /sygdrive/$:
+int sygdrive(char str[], int len_str)
+{
+	char cygdrive[] = "/cygdrive/";  
+    int len_cdr = slen(cygdrive);
+    //printf ("cygdrive len %d",len_cdr);
+	int place_drv = drv_in_str(str);
+	//printf("drive idx %d\n",place_drv);
+	if (place_drv != -1) {
+		right(str, len_str, len_cdr-1);
+		str[place_drv] = toLowCase(str[place_drv]);
+		char swap = str[place_drv];
+		copy(cygdrive, str);
+		str[len_cdr] = swap;
+	}
+	return place_drv;
 }
