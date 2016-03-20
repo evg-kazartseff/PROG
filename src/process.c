@@ -26,7 +26,7 @@ void process(char str[], char delim)
     
     for (i = 1; i <= margin[0]; i++) {
         margin[tmp] = stok(ptr[0][i - 1], sl, ptr[i]);
-        printf("margin = %d\n", margin[tmp]);
+        printf("margin-%d = %d\n",tmp, margin[tmp]);
         for (j = 0; j < margin[tmp]; j++) {
             printf("adr_ptr[%d][%d] = %d\n", i, j, ptr[i][j]);
             printf("margin [%d][%d] = %s\n", i, j, ptr[i][j]);    
@@ -55,7 +55,7 @@ void process(char str[], char delim)
 				int now = slen(ptr[i][j]);
 				int step = before + now +1;
 				ptr[k][p] = &(str[step]);
-				printf("ptr[%d][%d]\n",i,j);
+				/*printf("ptr[%d][%d]\n",i,j);
 				printf("ptr [%d][%d] = %s\n", i, j, ptr[i][j]);
 				printf("ptr [%d][%d] = %d\n", i, j, ptr[i][j]);
 				printf("before %d\n",before);
@@ -63,8 +63,9 @@ void process(char str[], char delim)
 				printf("step %d\n",step);
 				printf("cdrv [%d][%d] = %s\n", k, p, ptr[k][p]);
 				printf("adrv [%d][%d] = %d\n", k, p, ptr[k][p]);
-				printf("\n");
+				printf("\n");*/
 			}
+		ptr[0][i-1] = ptr[i][0];
 		}
 	}
 	
@@ -78,11 +79,10 @@ void process(char str[], char delim)
 	printf("cdrv [2][2] = %s\n",ptr[2][2]);
 	printf("cdrv [3][0] = %s\n",ptr[3][0]);
 
-	for ( i = 0; i <=margin[0]; i++) {
+	for ( i = 1; i <=margin[0]; i++) {
 			suntok (str, '/', ptr[i], margin[i]);
 	}
-	//suntok (str, delim, ptr[0], margin[0]);
-	
+	suntok (str, delim, ptr[0], margin[0]);
 	for (int r = 0; r < len_str + len_cdr + len_cdr; r++) {	
 		if (str[r] == '\0') {
 				printf(" ");
