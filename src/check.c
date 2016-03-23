@@ -3,6 +3,9 @@
 #include <stdlib.h>
 
 //превышение допустимой длины строки
+void check(char str[], char delim)
+{
+
 int strlong(char str[], char delim)
 {
     int i = 0;
@@ -16,3 +19,4 @@ int strlong(char str[], char delim)
     }
 }
 
+}

@@ -13,6 +13,7 @@ int main()
     char str[str_size];
     char delim;
     input(str, &delim);
+    check(str, delim);
     process(str, delim);
     output(str);
     return 0;

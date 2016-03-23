@@ -3,5 +3,5 @@
 
 void output(char str[])
 {
-    printf("new paths: %s\n",str);
+    printf("New paths: %s\n",str);
 }
