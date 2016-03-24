@@ -3,10 +3,9 @@
 #include "input.h"
 #include "process.h"
 #include "check.h"
-#include "func.h"
 #include "output.h"
 
-#define str_size 2049
+#define str_size 1025
 
 int main()
 {

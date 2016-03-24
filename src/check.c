@@ -2,21 +2,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//превышение допустимой длины строки
 void check(char str[], char delim)
 {
-
-int strlong(char str[], char delim)
-{
-    int i = 0;
-    while (str[i] != '\0') {
-        i = i + 1;
+    int two_delim_flg = chk_two_delim(str, delim);
+    if (two_delim_flg != -1) {
+        printf("Warning! Two delim! '%c%c' idx '%d %d'\n", str[two_delim_flg],
+               str[two_delim_flg + 1], two_delim_flg, two_delim_flg + 1);
     }
 
-    if (i > 1024) {
-        printf("Excess path length!\n");
-        return EXIT_FAILURE;
+    int del_flg = chk_delim(delim);
+    if (del_flg == -1) {
+        printf("Incorrect value delim! '%c' \n", delim);
+        exit(EXIT_FAILURE);
     }
-}
 
+    int str_long = chk_strlong(str);
+    if (str_long > 1024) {
+        printf("Excess path length!\nMAX_long:1024!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int err_sym_flg = chk_err_sym(str);
+    if (err_sym_flg != -1) {
+        printf("Forbidden symbol! '%c' idx '%d'\n", str[err_sym_flg],
+               err_sym_flg);
+        exit(EXIT_FAILURE);
+    }
 }
