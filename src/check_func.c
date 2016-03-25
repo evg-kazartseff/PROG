@@ -25,7 +25,8 @@ int chk_err_sym(char str[])
 {
     char err_sym[] =
         { '?', '<', ' ', '>', '|', '"', '@', ',', ';', '$', '%', '^', '&', '(',
-')', '\0' };
+        ')', '\0'
+    };
     int len = slen(err_sym);
     int flg = -1;
     for (int i = 0; i < len; i++) {
@@ -62,7 +63,7 @@ int chk_null_after_delim(char str[], char delim)
 {
     int flg = -1;
     int len_str = slen(str);
-    for (int j = 0; j <= len_str+3; j++) {
+    for (int j = 0; j <= len_str + 3; j++) {
         if ((str[j] == delim) && (str[j + 2] == '\0')) {
             flg = j;
         }
