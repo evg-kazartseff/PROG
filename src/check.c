@@ -10,6 +10,11 @@ void check(char str[], char delim)
                str[two_delim_flg + 1], two_delim_flg, two_delim_flg + 1);
     }
 
+    int null_after_del = chk_null_after_delim(str, delim);
+    if (null_after_del != -1) {
+        printf("Warning! No path, after delim! \n");
+    }
+
     int del_flg = chk_delim(delim);
     if (del_flg == -1) {
         printf("Incorrect value delim! '%c' \n", delim);

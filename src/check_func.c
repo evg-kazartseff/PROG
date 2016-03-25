@@ -56,3 +56,16 @@ int chk_two_delim(char str[], char delim)
     }
     return flg;
 }
+
+//нет пути после делителя
+int chk_null_after_delim(char str[], char delim)
+{
+    int flg = -1;
+    int len_str = slen(str);
+    for (int j = 0; j <= len_str+3; j++) {
+        if ((str[j] == delim) && (str[j + 2] == '\0')) {
+            flg = j;
+        }
+    }
+    return flg;
+}
