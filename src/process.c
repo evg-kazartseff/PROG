@@ -52,8 +52,6 @@ void process(char str[], char delim)
 #endif
     }
 
-    char cygdrive[] = "/cygdrive/$";
-    int len_cdr = slen(cygdrive);
     for (i = 1; i <= margin[0]; i++) {
         for (j = 0; j < margin[i]; j++) {
             int flg = sygdrive(ptr[i][j], len_str);
