@@ -18,7 +18,7 @@ void check(char str[], char delim)
 
     int str_long = chk_strlong(str);
     if (str_long > str_size) {
-        printf("Excess path length!\nMAX_long:%d!\n",str_size);
+        printf("Excess path length!\nMAX_long:%d!\n", str_size);
         exit(EXIT_FAILURE);
     }
 	
