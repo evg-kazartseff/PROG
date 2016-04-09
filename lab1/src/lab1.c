@@ -5,7 +5,7 @@
 #include "check.h"
 #include "output.h"
 
-#define str_size 1025
+#define str_size 2048
 
 int main()
 {

@@ -96,7 +96,7 @@ int drv_in_str(char str[])
         'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'
     };
     char suf_drive = ':';
-    int i = schr(str, suf_drive);
+    int i = schr(str, suf_drive); 
     if (i != -1) {
         int j = schr(drive, str[i - 1]);
         if (j != -1) {
@@ -105,7 +105,7 @@ int drv_in_str(char str[])
             return j;
         }
     } else {
-        return i;
+        return -1;
     }
 }
 

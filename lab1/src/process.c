@@ -5,18 +5,16 @@
 #include "check_func.h"
 
 #define DEBUG 0
-#define way_size 260
+#define way_size 250
 
 void process(char str[], char delim)
 {
     int size = colch(str, delim);
-    int *ptr[size + 1][256];
+    int *ptr[size + 1][way_size];
     int margin[size + 1];
     int len_str = slen(str);
 
     int i;
-
-	
 
     margin[0] = stok(str, delim, ptr[0]);
 #if (DEBUG == 1)
@@ -33,10 +31,12 @@ void process(char str[], char delim)
 	
 //check ways
     for (i = 0; i < margin[0]; i++) {
+		
         int way_long = chk_strlong(ptr[0][i]);
         if (way_long > way_size) {
             printf("Warning! Excess path %d length!\nMAX_long:%d!\n", i+1,
                    way_size);
+            mass_err[i] = 1;
         }
         
         int flg_err_sym = chk_err_sym(ptr[0][i]);
@@ -44,6 +44,26 @@ void process(char str[], char delim)
 			printf("Forbidden symbol! idx '%d' '%c' path %d\n",
                flg_err_sym+1,str[((ptr[0][i] - ptr[0][0]) * sizeof(int))+flg_err_sym], i+1);
             mass_err[i] = 1;
+		}
+		
+		int flg_name_drive = chk_name_drive(ptr[0][i]);
+		if (flg_name_drive > 1) {
+			printf("Drive name in a path %d more than one\n",i+1);
+			mass_err[i] = 1;
+		}
+		else if ((flg_name_drive == -2) || (flg_name_drive == -1)) {
+			printf ("Incorrect drive name path %d\n",i+1);
+			mass_err[i] = 1;
+		}
+		/*else if (flg_name_drive == -1) {
+			printf("No drive letter in the path %d\n",i+1);
+			mass_err[i] = 1;
+		}*/
+		
+		int flg_sl = chk_sl(ptr[0][i]);
+		if (flg_sl > 0) {
+			printf ("In the path Windows %d a symbol '/'\n",i+1);
+			mass_err[i] = 1;
 		}
     }
 

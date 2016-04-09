@@ -8,11 +8,7 @@
 void check(char str[], char delim)
 {
 //убирает пробел перед строкой
-	while (str[0] == ' ') {
-		for (int i = 0; str[i] != '\0';i++) {
-			str[i] = str[i+1];
-		}
-	}
+	space_before(str);
 		
     int two_delim_flg = chk_two_delim(str, delim);
     if (two_delim_flg != -1) {
@@ -25,4 +21,9 @@ void check(char str[], char delim)
         printf("Excess path length!\nMAX_long:%d!\n",str_size);
         exit(EXIT_FAILURE);
     }
+	
+	int null_after_del = chk_null_after_delim(str, delim);
+	if (null_after_del != -1) {
+		printf("Warning! No path after delim!\n");
+	}
 }
