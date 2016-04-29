@@ -2,13 +2,14 @@
 #define LLIST_H
 
 #include <stdlib.h>
+#include "token.h"
 
 struct listnode {
-    char *data; /* Data */
+    struct tok *data; /* Data */
     struct listnode *next; /* Next node */
 };
 
-struct listnode *list_createnode(char *data);
-struct listnode *list_addfront(struct listnode *list, char *data);
+struct listnode *list_createnode(struct tok *token);
+struct listnode *list_addfront(struct listnode *list, struct tok *token);
 
 #endif

@@ -1,0 +1,10 @@
+<recipe name="хлеб" preptime="5" cooktime="180">
+    <composition>
+	<ingr amount="3" unit="ст">Мука</ingr>
+	<ingr amount="0.25" unit="гр">Дрожжи</ingr>
+    </composition>
+    <instructions>
+	<step>Смешать все ингредиенты и тщательно замесить.</step>
+	<step>Закрыть и оставить на один час в теплом помещении.</step>
+    </instructions>
+</recipe>
