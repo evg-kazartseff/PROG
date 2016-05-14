@@ -48,3 +48,14 @@ struct tok *stack_pop(struct stack *s)
 	return data;
     }
 }
+
+struct tok *stack_look_top(struct stack *s)
+{
+    if (s->top == NULL)
+	return NULL;
+    else {
+	struct tok *data;
+	data = s->top->data;
+	return data;
+    }
+}

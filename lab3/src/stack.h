@@ -16,6 +16,6 @@ void stack_free(struct stack *s);
 int stack_size(struct stack *s);
 int stack_push(struct stack *s, struct tok *token);
 struct tok *stack_pop(struct stack *s);
-
+struct tok *stack_look_top(struct stack *s);
 
 #endif
