@@ -3,7 +3,7 @@
 int create_buf (char **buf)
 {
     FILE *input;
-    input = fopen("../cfg/cfg.xml", "r");
+    input = fopen("../cfg/cfg.xml", "rw");
     if (input == NULL) {
 	    printf ("Can't open input file!!\n");
 	    return -1;

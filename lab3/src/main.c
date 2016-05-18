@@ -4,6 +4,7 @@
 #include "create_buf.h"
 #include "token.h"
 #include "strings.h"
+#include <string.h>
 
 /*void copy_tegname (char *str)*/
 
@@ -21,8 +22,17 @@ int main ()
     char *buf;
     flg = create_buf(&buf);
     printf("buf:\n%s\n",buf);
+    
+    char *buf_out;
+    flg = create_buf(&buf_out);
+    printf("buf:\n%sn",buf_out);
+    
 
-    char *ptr[256];
+    char **ptr = NULL;
+    ptr = calloc(1024, sizeof(char *));
+    
+    
+    
     char delim[4] = {'\n', '\t', ' ', '\0'};
     
     struct stack *s_chteg;
@@ -40,28 +50,42 @@ int main ()
 		    printf("error\n");
 		else {
 		    if (ptr[i][j+1] == buf_tok[1][1]) {
-			struct tok *token;
-			token = token_create(0, buf_tok[1]);
-			flg = stack_push(s_chteg, token);
+			struct tok *teg;
+			teg = token_create(0, buf_tok[1]);
+			flg = stack_push(s_chteg, teg);
 			printf("push %s\n", buf_tok[1]);
+			struct tok *name;
+			name = stack_pop(s_tegnames);
+			char *tag_name = NULL;
+			strcpy_c(&ptr[i][j + 2], &tag_name, buf_tok[2][0]);
+			flg = sequal(name->value, tag_name);
+			if (flg == 1)
+			    printf("ok\n");
+			else
+			    printf("err\n");
 		    }
 		    else {
-			struct tok *token;
-			token = token_create(0, buf_tok[0]);
-			flg = stack_push(s_chteg, token);
+			struct tok *teg;
+			teg = token_create(0, buf_tok[0]);
+			flg = stack_push(s_chteg, teg);
+			char *tag_name = NULL;
+			strcpy_c(&ptr[i][j + 1], &tag_name, buf_tok[2][0]);
+			struct tok *name;
+			name = token_create(3, tag_name);
+			flg = stack_push(s_tegnames, name);
 			printf("push %s\n", buf_tok[0]);
-			printf("str %s\n", &ptr[i][1]);
+			printf("str %s\n", tag_name);
 			
 		    }
 		}
 	    }
 	    else if (ptr[i][j] == buf_tok[2][0]) {
-		struct tok *tok_node;
-		tok_node = stack_pop(s_chteg);
-		if (tok_node == NULL)
+		struct tok *teg;
+		teg = stack_pop(s_chteg);
+		if (teg == NULL)
 		    fprintf(stderr, "stack: Stack underflow\n");
 		else {
-		    printf("pull: %s\n", tok_node->value);
+		    printf("pull: %s\n", teg->value);
 		}
 	    }
 	}
@@ -69,30 +93,8 @@ int main ()
     int size = stack_size(s_chteg);
     printf("size %d\n", size);
     
-
+    size = stack_size(s_tegnames);
+    printf("size %d\n", size);
     
-    struct stack *s;
-    s = stack_create();
-
-    for (i = 1; i <= 10; i++) {
-	struct tok *token;
-	token = token_create(i%3, buf_tok[i%3]);
-	flg = stack_push(s, token);
-	if (flg == -1)
-	    fprintf(stderr, "stack: Stack overflow\n");
-    }
-
-    struct tok *tok_node;
-    for (i = 1; i <= 11; i++) {
-	tok_node = stack_pop(s);
-	if (tok_node == NULL)
-	    fprintf(stderr, "stack: Stack underflow\n");
-	else {
-	    printf("pop: %s ", tok_node->value);
-	    printf("pop: %d\n", tok_node->id);
-	}
-    }
-    stack_free(s);
-
     return EXIT_SUCCESS;
 }

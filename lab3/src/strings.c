@@ -156,3 +156,16 @@ int sygdrive(char str[], int len_str)
     return place_drv;
 }
 
+//копирование до символа c
+void strcpy_c(char *src, char **dest, char c)
+{
+    int len = slen(src);
+    
+    char *tmp = malloc((len + 1) * sizeof(char));
+    int i;
+    for (i = 0; (i < len) && (src[i] != c); i++) {
+	tmp[i] = src[i];
+    }
+    tmp[i] = '\0';
+    *dest = tmp;
+}
