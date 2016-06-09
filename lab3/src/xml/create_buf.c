@@ -8,12 +8,20 @@ int create_buf (char **buf)
 	    printf ("Can't open input file!!\n");
 	    return -1;
     }
-    unsigned int N = 256, i = 0;   
-    char* tmp = (char*) malloc(sizeof(char)*N);    
+    unsigned int N = 1024, i = 0;   
+    char* tmp = (char*) malloc(sizeof(char)*N);
+    if (tmp == NULL) {
+	printf("error when allocating memory!\n");
+	return -1;
+    }
     while ((tmp [i] = fgetc(input)) != EOF)  {                
         if (++i >= N) {
             N = N * 2;
-            tmp = (char*) realloc(tmp, sizeof(char)*N);        
+            tmp = (char*)realloc(tmp, sizeof(char)*N);
+	    if (tmp == NULL) {
+		printf("error when allocating memory!\n");
+		return -1;
+	    }
         }   
     }
     fclose(input);

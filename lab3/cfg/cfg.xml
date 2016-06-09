@@ -1,10 +1,13 @@
-<recipe name="хлеб" preptime="5" cooktime="180">
-    <composition>
-	<ingr amount="3" unit="ст">Мука</ingr>
-	<ingr amount="0.25" unit="гр">Дрожжи</ingr>
-    </composition>
-    <instructions>
-	<step>Смешать все ингредиенты и тщательно замесить.</step>
-	<step>Закрыть и оставить на один час в теплом помещении.</step>
-    </instructions>
-</recipe>
+<lab3>
+    <way1 delim="+" adr="rfk" ptr="werg" wer=978>
+	<path> D:\qwerty\qwerty+E:\qwerty\qwerty\qwerty+/qwerty/qwerty</path>
+	<path>d:\qwerty\qwerty </path>
+    </way1>
+    <way2 delim="#">
+	<path delim="$>
+	    C:\Windows\system\lib$D:\data\git\prog
+	</path>
+	<path>Cd:\Windows\system#D\\data\git</path>
+	<path>C;\Windows\system#\errpath</path>
+    </way2>
+</lab3>

@@ -34,27 +34,22 @@ int schr(char str[], char ch)
 }
 
 //разбиение строки на поля
-int stok(char *str, char *delim, char **ptr)
+int stok(char str[], char delim, char *ptr[])
 {
+    char *suf = str;
     ptr[0] = str;
-    int j, i = 1;
-    int size = slen(str);
-    int size_delim = slen(delim);
-    for (int k = 0; k < size; k++) {
-	for(j = 0; j < size_delim; j++) {
-	    if (str[k] == delim[j]) {
-		str[k] = '\0';
-		if (k+1 != size)
-		    ptr[i] = (&str[k] + 1);
-		    i++;
-	    }
-	}
+    int i, j = 1;
+    while ((i = schr(suf, delim)) >= 0) {
+        suf[i] = '\0';
+        suf = suf + i + 1;
+        ptr[j] = suf;
+        j++;
     }
-    return i-1;
+    return j;
 }
 
 //востановление строки
-int suntok(char str[], char delim, char *ptr[], int cnt)
+void suntok(char str[], char delim, char *ptr[], int cnt)
 {
     int i;
     for (i = 1; i < cnt; i++) {
@@ -117,8 +112,7 @@ int drv_in_str(char str[])
 //функция смещения на вправо
 void right(char str[], int len_str, int len)
 {
-    int t = len_str;
-    for (t; t >= 0; t--) {
+    for (int t = len_str; t >= 0; t--) {
         str[t + len] = str[t];
     }
 }
@@ -154,18 +148,4 @@ int sygdrive(char str[], int len_str)
         str[len_cdr] = swap;
     }
     return place_drv;
-}
-
-//копирование до символа c
-void strcpy_c(char *src, char **dest, char c)
-{
-    int len = slen(src);
-    
-    char *tmp = malloc((len + 1) * sizeof(char));
-    int i;
-    for (i = 0; (i < len) && (src[i] != c); i++) {
-	tmp[i] = src[i];
-    }
-    tmp[i] = '\0';
-    *dest = tmp;
 }
